@@ -1,0 +1,281 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "تحدّي المعرفة"
+ * Soft gradient backdrop, glass cards, teal primary, semantic level colors.
+ * All colors in oklch; add new tokens to :root/.dark and map them in @theme inline.
+ */
+
+@theme inline {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-easy: var(--easy);
+  --color-easy-foreground: var(--easy-foreground);
+  --color-medium: var(--medium);
+  --color-medium-foreground: var(--medium-foreground);
+  --color-hard: var(--hard);
+  --color-hard-foreground: var(--hard-foreground);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.012 190);
+  --foreground: oklch(0.27 0.035 235);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.27 0.035 235);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.27 0.035 235);
+  --primary: oklch(0.52 0.115 200);
+  --primary-foreground: oklch(0.99 0.01 190);
+  --secondary: oklch(0.955 0.015 195);
+  --secondary-foreground: oklch(0.3 0.05 230);
+  --muted: oklch(0.955 0.012 200);
+  --muted-foreground: oklch(0.5 0.03 230);
+  --accent: oklch(0.93 0.03 190);
+  --accent-foreground: oklch(0.3 0.05 230);
+  --destructive: oklch(0.6 0.2 27);
+  --destructive-foreground: oklch(0.99 0.01 27);
+  --border: oklch(0.9 0.02 210);
+  --input: oklch(0.9 0.02 210);
+  --ring: oklch(0.65 0.09 200);
+  --easy: oklch(0.62 0.17 152);
+  --easy-foreground: oklch(0.99 0.01 152);
+  --medium: oklch(0.77 0.14 75);
+  --medium-foreground: oklch(0.28 0.06 75);
+  --hard: oklch(0.6 0.2 27);
+  --hard-foreground: oklch(0.99 0.01 27);
+}
+
+.dark {
+  --background: oklch(0.17 0.03 240);
+  --foreground: oklch(0.95 0.01 200);
+  --card: oklch(0.23 0.035 240);
+  --card-foreground: oklch(0.95 0.01 200);
+  --popover: oklch(0.23 0.035 240);
+  --popover-foreground: oklch(0.95 0.01 200);
+  --primary: oklch(0.75 0.1 195);
+  --primary-foreground: oklch(0.19 0.04 225);
+  --secondary: oklch(0.28 0.04 235);
+  --secondary-foreground: oklch(0.95 0.01 200);
+  --muted: oklch(0.28 0.035 235);
+  --muted-foreground: oklch(0.7 0.03 220);
+  --accent: oklch(0.3 0.04 220);
+  --accent-foreground: oklch(0.95 0.01 200);
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.08 200);
+  --easy: oklch(0.68 0.16 152);
+  --easy-foreground: oklch(0.18 0.05 152);
+  --medium: oklch(0.8 0.13 78);
+  --medium-foreground: oklch(0.22 0.06 78);
+  --hard: oklch(0.66 0.19 25);
+  --hard-foreground: oklch(0.98 0.01 25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Frosted glass card */
+  .glass {
+    background-color: color-mix(in oklab, var(--card) 78%, transparent);
+    border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 34px -14px oklch(0.3 0.05 240 / 0.18);
+  }
+
+  /* 3D Scrambled Letter Tile */
+  .tile-3d {
+    background: linear-gradient(
+      180deg,
+      var(--card) 0%,
+      color-mix(in oklab, var(--card) 88%, var(--primary) 12%) 100%
+    );
+    box-shadow:
+      0 4px 0 color-mix(in oklab, var(--border) 80%, black 20%),
+      0 8px 16px -4px oklch(0 0 0 / 0.18);
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+  }
+  .tile-3d:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow:
+      0 1px 0 color-mix(in oklab, var(--border) 80%, black 20%),
+      0 3px 6px -2px oklch(0 0 0 / 0.15);
+  }
+
+  /* Glowing word game answer slot */
+  .slot-empty {
+    background-color: color-mix(in oklab, var(--muted) 40%, transparent);
+    border: 2px dashed color-mix(in oklab, var(--border) 90%, transparent);
+  }
+  .slot-filled {
+    background-color: color-mix(in oklab, var(--card) 95%, transparent);
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 12px -2px color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+  .slot-correct {
+    background-color: color-mix(in oklab, var(--easy) 20%, var(--card) 80%);
+    border: 2px solid var(--easy);
+    color: var(--easy-foreground);
+    box-shadow: 0 0 18px color-mix(in oklab, var(--easy) 45%, transparent);
+  }
+  .slot-locked {
+    background-color: color-mix(in oklab, var(--medium) 20%, var(--card) 80%);
+    border: 2px solid var(--medium);
+  }
+}
+
+/* Background Animated Blobs */
+@keyframes blob-move-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 30px) scale(1.08);
+  }
+}
+
+@keyframes blob-move-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, -25px) scale(1.12);
+  }
+}
+
+.animate-blob-1 {
+  animation: blob-move-1 18s ease-in-out infinite;
+}
+.animate-blob-2 {
+  animation: blob-move-2 22s ease-in-out infinite reverse;
+}
+
+/* Entrance + feedback animations */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.92);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+@keyframes float-score {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-16px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1);
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@utility animate-pop {
+  animation: pop 0.3s ease-out both;
+}
+@utility animate-shake {
+  animation: shake 0.45s ease-in-out both;
+}
+@utility animate-float-score {
+  animation: float-score 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-blob-1,
+  .animate-blob-2 {
+    animation: none !important;
+  }
+}

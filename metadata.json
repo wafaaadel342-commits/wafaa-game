@@ -1,0 +1,6 @@
+{
+  "name": "ثقف نفسك",
+  "description": "منصة ألعاب العقل والذكاء والمعرفة باللغة العربية: تحدّي المعرفة، ركّب الكلمة، والمزيد",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
