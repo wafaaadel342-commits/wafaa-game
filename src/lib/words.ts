@@ -59,7 +59,7 @@ export interface WordItem {
   hint: string;
   category: string;
   scrambled: string[];
-  alternatives?: string[]; // valid anagrams that use the exact same letters
+  alternatives?: string[] | undefined; // valid anagrams that use the exact same letters
 }
 
 export interface WordResultItem {
@@ -121,16 +121,16 @@ export interface SentenceItem {
   sentence: string; // original clean Arabic sentence
   words: string[]; // clean words in correct order
   scrambled: string[]; // scrambled words
-  hint?: string;
-  category?: string;
+  hint?: string | undefined;
+  category?: string | undefined;
   level: SentenceLevel;
   wordCount: number;
 }
 
 export interface SentenceResultItem {
   sentence: string;
-  hint?: string;
-  category?: string;
+  hint?: string | undefined;
+  category?: string | undefined;
   status: "solved" | "timeout" | "skipped";
   pointsEarned: number;
   revealsUsed: number;
@@ -331,7 +331,7 @@ export interface RawWordDefinition {
   word: string;
   hint: string;
   category: string;
-  alternatives?: string[];
+  alternatives?: string[] | undefined;
 }
 
 export const FALLBACK_WORD_BANK: RawWordDefinition[] = [

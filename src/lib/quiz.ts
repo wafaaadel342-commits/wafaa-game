@@ -97,18 +97,18 @@ export interface Question {
   options: string[];
   correctIndex: number;
   explanation: string;
-  imageQuery?: string;
-  countryCode?: string;
-  topicKey?: string;
-  imageUrl?: string;
+  imageQuery?: string | undefined;
+  countryCode?: string | undefined;
+  topicKey?: string | undefined;
+  imageUrl?: string | undefined;
 }
 
 export function getQuestionDedupeKey(q: {
   category: string;
   question: string;
-  countryCode?: string;
-  imageQuery?: string;
-  topicKey?: string;
+  countryCode?: string | undefined;
+  imageQuery?: string | undefined;
+  topicKey?: string | undefined;
 }): string {
   const cat = q.category;
   if (cat === "flags" && q.countryCode) {
@@ -130,7 +130,7 @@ export function getQuestionDedupeKey(q: {
 export interface Missed {
   question: string;
   correct: string;
-  chosen?: string;
+  chosen?: string | undefined;
   category: string;
 }
 
@@ -141,7 +141,7 @@ export interface Settings {
   openrouterModels: string[];
   volume: number;
   muted: boolean;
-  lastUsedModel?: string;
+  lastUsedModel?: string | undefined;
 }
 
 export interface QuizSetupOptions {

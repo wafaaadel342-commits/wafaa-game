@@ -183,11 +183,13 @@ export function WordsHomeScreen({
           const style = LEVEL_STYLES[lvl]!;
           const bestScore = isWord ? wordsBest[lvl] || 0 : sentencesBest[lvl] || 0;
 
+          const wordInfo = WORD_LEVELS[lvl];
+          const sentenceInfo = SENTENCE_LEVELS[lvl];
           const rangeLabel = isWord
-            ? info.letterRange[0] === info.letterRange[1]
-              ? `${info.letterRange[0]} أحرف`
-              : `${info.letterRange[0]} - ${info.letterRange[1]} أحرف`
-            : `${(info as unknown as { wordRange: [number, number] }).wordRange[0]} - ${(info as unknown as { wordRange: [number, number] }).wordRange[1]} كلمات`;
+            ? wordInfo.letterRange[0] === wordInfo.letterRange[1]
+              ? `${wordInfo.letterRange[0]} أحرف`
+              : `${wordInfo.letterRange[0]} - ${wordInfo.letterRange[1]} أحرف`
+            : `${sentenceInfo.wordRange[0]} - ${sentenceInfo.wordRange[1]} كلمات`;
 
           return (
             <motion.button

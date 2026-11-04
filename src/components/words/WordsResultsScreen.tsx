@@ -26,8 +26,8 @@ interface Props {
   mode: GameSubMode;
   level: WordLevel | SentenceLevel;
   score: number;
-  wordResults?: WordResultItem[];
-  sentenceResults?: SentenceResultItem[];
+  wordResults?: WordResultItem[] | undefined;
+  sentenceResults?: SentenceResultItem[] | undefined;
   bestStreak: number;
   totalCount: number;
   onReplay: () => void;

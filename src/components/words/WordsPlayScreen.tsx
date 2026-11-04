@@ -161,6 +161,7 @@ export function WordsPlayScreen({ level, words, onFinish, onHome }: Props) {
     const allFilled = slots.length > 0 && slots.every((s) => s.letter !== null);
     if (!allFilled) return;
 
+    const constructed = slots.map((s) => s.letter).join("");
     const isMatch =
       constructed === currentWord.word ||
       Boolean(currentWord.alternatives && currentWord.alternatives.includes(constructed));

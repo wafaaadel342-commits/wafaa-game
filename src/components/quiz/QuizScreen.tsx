@@ -12,6 +12,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { markItemSeen } from "@/lib/anti-repeat";
 import { preloadImage } from "@/lib/images";
 import { fetchInitialBatch, fetchRemainingBatch } from "@/lib/providers";
@@ -575,8 +576,8 @@ export function QuizScreen({ level, settings, setupOptions, onFinish, onExit }: 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.04, duration: 0.2 }}
-                  whileHover={!answered ? { scale: 1.012 } : undefined}
-                  whileTap={!answered ? { scale: 0.985 } : undefined}
+                  whileHover={!answered ? { scale: 1.012 } : {}}
+                  whileTap={!answered ? { scale: 0.985 } : {}}
                   onClick={() => {
                     sound.unlock();
                     answer(i);

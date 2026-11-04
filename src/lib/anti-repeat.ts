@@ -239,9 +239,9 @@ export interface BankQuizItem {
   options: string[];
   correctIndex: number;
   explanation: string;
-  topicKey?: string;
-  countryCode?: string;
-  imageQuery?: string;
+  topicKey?: string | undefined;
+  countryCode?: string | undefined;
+  imageQuery?: string | undefined;
   addedAt: number;
 }
 
@@ -253,7 +253,7 @@ export interface BankWordItem {
   hint: string;
   category: string;
   scrambled: string[];
-  alternatives?: string[];
+  alternatives?: string[] | undefined;
   addedAt: number;
 }
 
@@ -263,8 +263,8 @@ export interface BankSentenceItem {
   sentence: string;
   level: "easy" | "medium" | "hard";
   words: string[];
-  hint?: string;
-  category?: string;
+  hint?: string | undefined;
+  category?: string | undefined;
   wordCount: number;
   addedAt: number;
 }
